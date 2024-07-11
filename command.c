@@ -96,7 +96,7 @@ int cmdcmp(char *ptr,char *cmd,int minlen) {
 
 int look_values(int cn,char *name) {
     int coID;
-    char buf[80];
+    char buf[MAX_CHARACTER_NAME_LENGTH];
 
     coID=lookup_name(name,NULL);
     if (coID==0) {
@@ -128,7 +128,7 @@ int start_shutdown(int diff,int down) {
 
 int lollipop_cmd(int cn,char *name) {
     int coID;
-    char buf[80];
+    char buf[MAX_CHARACTER_NAME_LENGTH];
 
     coID=lookup_name(name,NULL);
     if (coID==0) {
@@ -154,7 +154,7 @@ int who_staff(int cn) {
 
 static int cmd_complain(int cn,char *ptr) {
     struct misc_ppd *ppd;
-    char name[80],realname[80];
+    char name[MAX_CHARACTER_NAME_LENGTH],realname[MAX_CHARACTER_NAME_LENGTH];
     int n,ret;
     char *reason=ptr;
 
@@ -211,7 +211,7 @@ static int cmd_complain(int cn,char *ptr) {
 }
 
 static int cmd_punish(int cn,char *ptr) {     // 1=OK, 0=repeat
-    char name[80],reason[80],buf[256];
+    char name[MAX_CHARACTER_NAME_LENGTH],reason[80],buf[256];
     int level,n,uID;
 
     for (n=0; isalpha(*ptr) && n<79; name[n++]=*ptr++);
@@ -259,7 +259,7 @@ static int cmd_punish(int cn,char *ptr) {     // 1=OK, 0=repeat
 }
 
 static int cmd_shutup(int cn,char *ptr) {     // 1=OK, 0=repeat
-    char name[80],buf[256];
+    char name[MAX_CHARACTER_NAME_LENGTH],buf[256];
     int minutes,n,uID;
 
     for (n=0; isalpha(*ptr) && n<79; name[n++]=*ptr++);
@@ -295,7 +295,7 @@ static int cmd_shutup(int cn,char *ptr) {     // 1=OK, 0=repeat
 }
 
 static int cmd_setskill(int cn,char *ptr) {       // 1=OK, 0=repeat
-    char name[80];
+    char name[MAX_CHARACTER_NAME_LENGTH];
     int pos,val,co,diff,old,n,oldv;
 
     for (n=0; isalpha(*ptr) && n<79; name[n++]=*ptr++);
@@ -337,7 +337,7 @@ static int cmd_setskill(int cn,char *ptr) {       // 1=OK, 0=repeat
 }
 
 static int cmd_staffcode(int cn,char *ptr) {      // 1=OK, 0=repeat
-    char name[80],code[4];
+    char name[MAX_CHARACTER_NAME_LENGTH],code[4];
     int co,n;
 
     for (n=0; isalpha(*ptr) && n<79; name[n++]=*ptr++);
@@ -369,7 +369,7 @@ static int cmd_staffcode(int cn,char *ptr) {      // 1=OK, 0=repeat
 }
 
 static int cmd_exterminate(int cn,char *ptr) {
-    char name[80],buf[256];
+    char name[MAX_CHARACTER_NAME_LENGTH],buf[256];
     int n;
 
     for (n=0; isalpha(*ptr) && n<79; name[n++]=*ptr++);
@@ -385,7 +385,7 @@ static int cmd_exterminate(int cn,char *ptr) {
 }
 
 static int cmd_rename(int cn,char *ptr) {
-    char from[80],to[80];
+    char from[MAX_CHARACTER_NAME_LENGTH],to[MAX_CHARACTER_NAME_LENGTH];
     int n;
 
     for (n=0; isalpha(*ptr) && n<79; from[n++]=*ptr++);
@@ -403,7 +403,7 @@ static int cmd_rename(int cn,char *ptr) {
 }
 
 static int cmd_lockname(int cn,char *ptr) {
-    char from[80];
+    char from[MAX_CHARACTER_NAME_LENGTH];
     int n;
 
     for (n=0; isalpha(*ptr) && n<79; from[n++]=*ptr++);
@@ -415,7 +415,7 @@ static int cmd_lockname(int cn,char *ptr) {
     return 1;
 }
 static int cmd_unlockname(int cn,char *ptr) {
-    char from[80];
+    char from[MAX_CHARACTER_NAME_LENGTH];
     int n;
 
     for (n=0; isalpha(*ptr) && n<79; from[n++]=*ptr++);
@@ -428,7 +428,7 @@ static int cmd_unlockname(int cn,char *ptr) {
 }
 
 static int cmd_unpunish(int cn,char *ptr) {       // 1=OK, 0=repeat
-    char name[80];
+    char name[MAX_CHARACTER_NAME_LENGTH];
     int n,uID,ID;
 
     for (n=0; isalpha(*ptr) && n<79; name[n++]=*ptr++);
@@ -454,7 +454,7 @@ static int cmd_unpunish(int cn,char *ptr) {       // 1=OK, 0=repeat
 }
 
 static int cmd_tell(int cn,char *ptr) {
-    char name[80],realname[80],sname[80];
+    char name[MAX_CHARACTER_NAME_LENGTH],realname[MAX_CHARACTER_NAME_LENGTH],sname[MAX_CHARACTER_NAME_LENGTH];
     int uID,n;
 
     for (n=0; isalpha(*ptr) && n<79; name[n++]=*ptr++);
@@ -502,7 +502,7 @@ static int cmd_tell(int cn,char *ptr) {
 }
 
 static void cmd_ls(int cn,char *ptr) {
-    char name[80];
+    char name[MAX_CHARACTER_NAME_LENGTH];
     int co,n;
 
     for (n=0; isalpha(*ptr) && n<79; name[n++]=*ptr++);
@@ -524,7 +524,7 @@ static void cmd_ls(int cn,char *ptr) {
 }
 
 static void cmd_cat(int cn,char *ptr) {
-    char name[80];
+    char name[MAX_CHARACTER_NAME_LENGTH];
     int co,n;
 
     for (n=0; isalpha(*ptr) && n<79; name[n++]=*ptr++);
@@ -566,7 +566,7 @@ static void cmd_who(int cn) {
 
 // note must not specify more than one flag per call
 static int cmd_flag(int cn,char *ptr,unsigned long long flag) {
-    char name[80],*fptr;
+    char name[MAX_CHARACTER_NAME_LENGTH],*fptr;
     int co,n,uID;
 
     for (n=0; isalpha(*ptr) && n<79; name[n++]=*ptr++);
@@ -637,7 +637,7 @@ void cmd_hate(int cn,char *ptr) {
 
 void cmd_exp(int cn,char *ptr) {
     int co,val,n;
-    char buf[80];
+    char buf[MAX_CHARACTER_NAME_LENGTH];
 
     while (isspace(*ptr)) ptr++;
 
@@ -670,7 +670,7 @@ void cmd_exp(int cn,char *ptr) {
 
 void cmd_labsolved(int cn,char *ptr) {
     int co,val,n;
-    char buf[80];
+    char buf[MAX_CHARACTER_NAME_LENGTH];
     struct lab_ppd *ppd;
     unsigned long long bit;
 
@@ -734,7 +734,7 @@ int cmd_nohate(int cn,char *ptr) {
 }
 
 static void cmd_noarch(int cn,char *ptr) {
-    char name[80];
+    char name[MAX_CHARACTER_NAME_LENGTH];
     int co,n;
 
     for (n=0; isalpha(*ptr) && n<79; name[n++]=*ptr++);
@@ -760,7 +760,7 @@ static void cmd_noarch(int cn,char *ptr) {
 }
 
 static void cmd_fixit(int cn,char *ptr) {
-    char name[80];
+    char name[MAX_CHARACTER_NAME_LENGTH];
     int co,n;
 
     for (n=0; isalpha(*ptr) && n<79; name[n++]=*ptr++);
@@ -783,7 +783,7 @@ static void cmd_fixit(int cn,char *ptr) {
 
 static void cmd_questfix(int cn,char *ptr) {
     struct quest *quest;
-    char name[80];
+    char name[MAX_CHARACTER_NAME_LENGTH];
     int co,n;
 
     for (n=0; isalpha(*ptr) && n<79; name[n++]=*ptr++);
@@ -807,7 +807,7 @@ static void cmd_questfix(int cn,char *ptr) {
 }
 
 static void cmd_reset(int cn,char *ptr) {
-    char name[80];
+    char name[MAX_CHARACTER_NAME_LENGTH];
     int co,n;
 
     for (n=0; isalpha(*ptr) && n<79; name[n++]=*ptr++);
@@ -1172,7 +1172,7 @@ int is_lqmaster(int cn) {
 
 void cmd_renclan(int cn,char *ptr) {
     int cnr,n;
-    char name[80];
+    char name[MAX_CHARACTER_NAME_LENGTH];
 
     if (areaID!=3) {
         log_char(cn,LOG_SYSTEM,0,"Sorry, this command only works in Aston.");
@@ -1203,7 +1203,7 @@ void cmd_renclan(int cn,char *ptr) {
 
 void cmd_renclub(int cn,char *ptr) {
     int cnr,n;
-    char name[80];
+    char name[MAX_CHARACTER_NAME_LENGTH];
 
     if (areaID!=3) {
         log_char(cn,LOG_SYSTEM,0,"Sorry, this command only works in Aston.");
@@ -2088,7 +2088,7 @@ int command(int cn,char *ptr) {   // 1=ok, 0=repeat
     }
 
     if ((len=cmdcmp(ptr,"look",4)) && (ch[cn].flags&(CF_GOD|CF_STAFF))) {
-        char name[80]={"oops"};
+        char name[MAX_CHARACTER_NAME_LENGTH]={"oops"};
         int ID;
 
         ptr+=len; while (isspace(*ptr)) ptr++;
@@ -2111,7 +2111,7 @@ int command(int cn,char *ptr) {   // 1=ok, 0=repeat
     }
 
     if ((len=cmdcmp(ptr,"lastseen",4))) {
-        char name[80]={"oops"};
+        char name[MAX_CHARACTER_NAME_LENGTH]={"oops"};
         int ID;
 
         ptr+=len; while (isspace(*ptr)) ptr++;
@@ -2563,7 +2563,7 @@ int command(int cn,char *ptr) {   // 1=ok, 0=repeat
     }
 
     if ((len=cmdcmp(ptr,"itemname",8)) && (ch[cn].flags&(CF_GOD))) {
-        char name[80];
+        char name[MAX_CHARACTER_NAME_LENGTH];
         int in,n;
 
         ptr+=len;

@@ -170,7 +170,7 @@ struct contender {
 #define MS_FIGHT	2	// watch the fight
 
 struct entry {
-    char name[40];
+    char name[MAX_CHARACTER_NAME_LENGTH];
     int score;
     int updated;
 };
@@ -819,7 +819,7 @@ struct manager_data {
 
     int renter;
     int timeout;
-    char invite[80];
+    char invite[MAX_CHARACTER_NAME_LENGTH];
 
     int arena_x;
     int arena_y;

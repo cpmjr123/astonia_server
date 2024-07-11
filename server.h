@@ -371,6 +371,8 @@ extern struct item *it;
 
 #define INVENTORYSIZE	110
 
+#define MAX_CHARACTER_NAME_LENGTH 40
+
 // driver data block definition
 struct data
 {
@@ -384,8 +386,7 @@ struct data
 struct character
 {
 	unsigned long long flags;
-
-        char name[40];
+        char name[MAX_CHARACTER_NAME_LENGTH];
         char description[LENDESC];
 	unsigned int ID;
 

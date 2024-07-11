@@ -57,7 +57,7 @@ void register_rec_tell(int cn,int coID) {
 void check_tells(int cn) {
     int n;
     struct tell_data *dat;
-    char name[80];
+    char name[MAX_CHARACTER_NAME_LENGTH];
 
     if (!(ch[cn].flags&CF_PLAYER)) return;
 

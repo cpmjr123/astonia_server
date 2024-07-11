@@ -36,7 +36,7 @@ static char* clanlog_player(int cn,char *ptr,int *pID,int *prepeat) {
         if (!*ptr || isspace(*ptr)) break;
         name[len]=*ptr++;
     }
-    if (len<1 || len>70) {
+    if (len<1 || len>MAX_CHARACTER_NAME_LENGTH) {
         log_char(cn,LOG_SYSTEM,0,"Invalid name");
         return NULL;
     }

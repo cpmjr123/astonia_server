@@ -166,7 +166,7 @@ struct clanmaster_driver_data {
     char accept[80];
     int accept_clan;
     int accept_cn;
-    char join[80];
+    char join[MAX_CHARACTER_NAME_LENGTH];
 
     int give_try;
 
@@ -456,7 +456,7 @@ void clanclerk_driver(int cn,int ret,int lastact) {
     struct clanclerk_driver_data *dat;
     int co,in,res,nr,level,n,tmp1,tmp2;
     struct msg *msg,*next;
-    char *ptr,name[40];
+    char *ptr,name[MAX_CHARACTER_NAME_LENGTH];
 
     dat=set_data(cn,DRD_CLANCLERKDRIVER,sizeof(struct clanclerk_driver_data));
     if (!dat) return;   // oops...

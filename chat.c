@@ -400,7 +400,7 @@ static int cmdcmp(char *ptr,char *cmd) {
 
 static int write_chat(int cn,int channel,char *text) {
     int bit,n,xID,col;
-    char buf[512],name[80];
+    char buf[512],name[MAX_CHARACTER_NAME_LENGTH];
 
     while (isspace(*text)) text++;
 

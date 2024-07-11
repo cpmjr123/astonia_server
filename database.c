@@ -2823,7 +2823,7 @@ void db_read_notes(char *suID,char *srID) {
 }
 
 void karmalog_s(int rID,struct punishment *pun,int cID,int date,int ID,int uID) {
-    char name[80],offender[80];
+    char name[MAX_CHARACTER_NAME_LENGTH],offender[MAX_CHARACTER_NAME_LENGTH];
     struct tm *tm;
 
     lookup_ID(name,cID);
@@ -3072,7 +3072,7 @@ void db_exterminate(char *name,char *master) {
 
 void db_rename(char *name,char *master_to) {
     int masterID,nr,len;
-    char query[256],to[256],*ptr;
+    char query[256],to[MAX_CHARACTER_NAME_LENGTH],*ptr;
 
     masterID=atoi(master_to);
     strcpy(to,master_to+11);

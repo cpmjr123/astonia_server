@@ -13,7 +13,7 @@
 #include "chat.h"
 
 void list_punishment(int rID,struct punishment *pun,int cID,int date,int ID) {
-    char name[80];
+    char name[MAX_CHARACTER_NAME_LENGTH];
     struct tm *tm;
 
     lookup_ID(name,cID);

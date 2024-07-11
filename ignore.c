@@ -53,7 +53,7 @@ void ignore(int cn,int ID) {
 void list_ignore(int cn) {
     struct ignore_ppd *ppd;
     int n,res,flag=0;
-    char name[80];
+    char name[MAX_CHARACTER_NAME_LENGTH];
 
     if (!(ppd=set_data(cn,DRD_IGNORE_PPD,sizeof(struct ignore_ppd)))) return;   // OOPS
 

@@ -444,7 +444,7 @@ int del_all_hate(int cn) {
 void list_hate(int cn) {
     struct pk_ppd *ppd;
     int n,res,flag=0;
-    char name[80];
+    char name[MAX_CHARACTER_NAME_LENGTH];
 
     if (!(ch[cn].flags&CF_PLAYER) || !(ch[cn].flags&CF_PK)) return;
 

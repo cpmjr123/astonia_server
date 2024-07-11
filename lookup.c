@@ -15,7 +15,7 @@
 #define MAXLOOK	1024
 
 struct lookup {
-    char name[40];
+    char name[MAX_CHARACTER_NAME_LENGTH];
     int ID;
     int created;
 };

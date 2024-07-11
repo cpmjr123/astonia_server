@@ -77,7 +77,7 @@ static int areaser[MAXLEVEL+1]={
 static int tpower=0,minlevel=0,maxlevel=0;
 static int pent_record=0,pent_record_ID=0;
 static int demoncnt=0;
-char pent_record_name[40]={"Nobody"};
+char pent_record_name[MAX_CHARACTER_NAME_LENGTH]={"Nobody"};
 
 struct pent_nppd {
     int status; // 0 = normal, 1 = got 5 of same color
